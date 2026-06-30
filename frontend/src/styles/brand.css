@@ -1,0 +1,104 @@
+/* ── Brand Master — page-specific styles ────────────────────────────────
+   This page uses the GREEN accent (--accent) for its header/button,
+   distinct from Category Master (blue) and Treatment Master (red/pink).
+──────────────────────────────────────────────────────────────────────── */
+
+.bm-page { display: block; }
+
+/* ── Green primary button ── */
+.btn-primary-green {
+  background: linear-gradient(135deg, var(--accent), #00C9A0);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0,184,148,0.28);
+}
+.btn-primary-green:hover { background: #00a382; transform: translateY(-1px); }
+.btn-primary-green:disabled { opacity: 0.6; transform: none; }
+
+/* ── STAT CARDS ── */
+.bm-stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.bm-stat-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: var(--shadow);
+}
+.bm-stat-icon {
+  width: 42px; height: 42px; border-radius: 11px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0;
+}
+.bm-stat-icon.blue   { background: var(--primary-light); color: var(--primary); }
+.bm-stat-icon.green  { background: var(--accent-light);  color: var(--accent); }
+.bm-stat-icon.orange { background: var(--warning-light); color: var(--warning); }
+.bm-stat-icon.blue-text {
+  background: var(--primary-light); color: var(--primary);
+  font-size: 13px; font-weight: 800; font-family: var(--font-head);
+}
+
+/* ── TABLE: brand avatar (per-row distinct color, single-letter initial) ── */
+.bm-avatar {
+  width: 38px; height: 38px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 15px; font-weight: 800;
+  font-family: var(--font-head); flex-shrink: 0;
+}
+.bm-avatar.lg { width: 48px; height: 48px; font-size: 19px; border-radius: 12px; }
+
+.bm-code-chip {
+  display: inline-block;
+  background: var(--bg);
+  color: var(--text-mid);
+  font-size: 10px; font-weight: 700;
+  padding: 1px 6px; border-radius: 4px;
+  margin-left: 6px;
+  border: 1px solid var(--border);
+}
+.bm-country { font-size: 12px; color: var(--text-mid); }
+.bm-country::before { content: ''; }
+.bm-margin { color: var(--accent); font-weight: 700; }
+
+/* ── DRAWER (single-scroll, green header) ── */
+.bm-drawer { width: 780px; }
+.bm-drawer-header {
+  background: linear-gradient(135deg, var(--accent), #00C9A0);
+}
+.bm-drawer-content {
+  padding: 22px 24px;
+}
+
+/* ── Preview banner ── */
+.bm-preview-banner {
+  display: flex; align-items: center; gap: 14px;
+  background: var(--accent-light);
+  border: 1px solid #A8E8D8;
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  margin-bottom: 20px;
+}
+.bm-preview-text { flex: 1; display: flex; flex-direction: column; gap: 2px; }
+.bm-preview-text strong { font-size: 15px; color: var(--text-dark); }
+.bm-preview-text span { font-size: 12px; color: var(--text-light); }
+.bm-code-pill {
+  background: #fff; color: var(--accent);
+  border: 1px solid #A8E8D8;
+  font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 6px;
+}
+
+/* ── Section titles use blue icon chip like the design's "ℹ️ BASIC INFORMATION" ── */
+.bm-drawer-content .fs-title { margin-top: 8px; }
+.bm-drawer-content .fs-title:first-of-type { margin-top: 0; }
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .bm-drawer { width: 100vw; }
+  .bm-stats-row { grid-template-columns: repeat(2, 1fr); }
+}

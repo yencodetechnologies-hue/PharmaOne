@@ -1,0 +1,217 @@
+/* ══════════════════════════════════════════════════
+   employees-extra.css
+   Add this @import (or paste) into global.css,
+   OR import it in Employees.jsx / the page component
+   ══════════════════════════════════════════════════ */
+
+/* ── Missing teal CSS variable (not in root) ── */
+:root {
+  --teal:        #0097A7;
+  --teal-light:  #E0F7FA;
+}
+
+/* ── Alias: filter-sel (HTML used this; JSX uses filter-select) ── */
+.filter-sel {
+  border: 1.5px solid var(--border);
+  border-radius: 9px;
+  padding: 8px 12px;
+  font-size: 13px;
+  color: var(--text-mid);
+  background: var(--bg);
+  outline: none;
+  cursor: pointer;
+  font-family: var(--font);
+}
+.filter-sel:focus { border-color: var(--primary); }
+
+/* ── Alias: stat-val / stat-lbl (global uses stat-value / stat-label) ── */
+.stat-val   { font-family: var(--font-head); font-size: 24px; font-weight: 800; line-height: 1; }
+.stat-lbl   { font-size: 12px; color: var(--text-light); margin-top: 2px; }
+
+/* ── Staff avatar in table (entity-logo variant) ── */
+.staff-cell  { display: flex; align-items: center; gap: 12px; }
+.staff-avatar {
+  width: 40px; height: 40px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 13px; font-weight: 800; flex-shrink: 0;
+  font-family: var(--font-head);
+}
+.staff-cell strong { font-size: 13px; font-weight: 700; color: var(--text-dark); display: block; }
+.staff-cell small  { font-size: 11px; color: var(--text-light); }
+.emp-id-tag {
+  font-size: 10px; background: var(--primary-light); color: var(--primary);
+  padding: 1px 6px; border-radius: 4px; font-weight: 700;
+  display: inline-block; margin-top: 2px;
+}
+
+/* ── Act-btn color variants used in staff table ── */
+.act-btn.red:hover    { border-color: var(--danger);  color: var(--danger);  background: var(--danger-light); }
+.act-btn.orange:hover { border-color: var(--warning); color: var(--warning); background: var(--warning-light); }
+.act-btn.green:hover  { border-color: var(--accent);  color: var(--accent);  background: var(--accent-light); }
+
+/* ── View tabs (button variant) ── */
+.view-tabs button.view-tab { font-family: var(--font); }
+
+/* ── Drawer header gradient uses teal ── */
+.drawer-header {
+  background: linear-gradient(135deg, #0D6EAC, #0097A7) !important;
+  min-height: 72px;
+  padding: 0 24px !important;
+  align-items: center;
+}
+
+/* ── Step nav check icon (right side of done steps) ── */
+.step-check { font-size: 10px; color: var(--accent); flex-shrink: 0; }
+
+/* ── form-grid shorthands used in JSX (g2, g3 aliases) ── */
+.form-grid.g2 { grid-template-columns: 1fr 1fr; }
+.form-grid.g3 { grid-template-columns: 1fr 1fr 1fr; }
+.form-grid.g1 { grid-template-columns: 1fr; }
+.col-full { grid-column: 1 / -1; }
+
+/* ── Input prefix (ig / pre alias from HTML) ── */
+.ig {
+  display: flex; align-items: center;
+  border: 1.5px solid var(--border); border-radius: 9px; overflow: hidden;
+  transition: border-color .2s, box-shadow .2s;
+}
+.ig:focus-within { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(13,110,172,0.08); }
+.ig .pre {
+  padding: 9px 12px; background: var(--bg);
+  border-right: 1.5px solid var(--border);
+  font-size: 12px; font-weight: 600; color: var(--text-light);
+  white-space: nowrap; flex-shrink: 0;
+}
+.ig input { border: none !important; border-radius: 0 !important; box-shadow: none !important; flex: 1; }
+
+/* ── Toggle switch (toggle-sw / toggle-sl from HTML) ── */
+.toggle-sw  { position: relative; display: inline-block; width: 42px; height: 22px; flex-shrink: 0; }
+.toggle-sw input { opacity: 0; width: 0; height: 0; }
+.toggle-sl {
+  position: absolute; cursor: pointer; inset: 0;
+  background: #CBD5E0; border-radius: 22px; transition: .3s;
+}
+.toggle-sl::before {
+  content: ''; position: absolute; width: 16px; height: 16px;
+  left: 3px; top: 3px; background: #fff; border-radius: 50%;
+  transition: .3s; box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+.toggle-sw input:checked + .toggle-sl { background: var(--primary); }
+.toggle-sw input:checked + .toggle-sl::before { transform: translateX(20px); }
+
+/* ── Address labels ── */
+.addr-label {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.8px; color: var(--text-light);
+  margin-bottom: 10px; margin-top: 4px;
+  display: flex; align-items: center; gap: 6px;
+}
+.addr-label i { font-size: 12px; }
+
+/* ── Same address checkbox banner ── */
+.same-addr-check {
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 16px; background: var(--primary-light);
+  border: 1px solid var(--primary-mid); border-radius: 9px;
+  cursor: pointer; margin-bottom: 14px;
+}
+.same-addr-check input { width: 16px; height: 16px; accent-color: var(--primary); cursor: pointer; }
+.same-addr-check span  { font-size: 13px; font-weight: 600; color: var(--primary); }
+
+/* ── Info box variants ── */
+.info-box.info-blue   { background: var(--primary-light); border-color: var(--primary-mid); color: var(--primary); }
+.info-box.info-green  { background: var(--accent-light);  border-color: #9EDDD4;            color: #007a5e; }
+.info-box.info-orange { background: var(--warning-light); border-color: #FAD7A0;            color: #a06000; }
+.info-box.info-teal   { background: var(--teal-light);    border-color: #80DEEA;            color: var(--teal); }
+.info-box span        { font-size: 12px; font-weight: 500; line-height: 1.5; }
+
+/* ── Form section title (fs-header matches HTML's .fs-header) ── */
+.fs-header {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 18px; padding-bottom: 12px;
+  border-bottom: 2px solid var(--border);
+}
+.fs-header .fs-icon {
+  width: 38px; height: 38px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px; flex-shrink: 0;
+}
+.fs-header h4 { font-family: var(--font-head); font-size: 15px; font-weight: 700; color: var(--text-dark); }
+.fs-header p  { font-size: 12px; color: var(--text-light); margin-top: 2px; }
+
+/* ── Req asterisk ── */
+.req { color: var(--danger); }
+
+/* ── Separator ── */
+.sep-line { height: 1px; background: var(--border); margin: 16px 0; }
+
+/* ── Doc grid (2-col) ── */
+.doc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.doc-card {
+  border: 1.5px dashed var(--border); border-radius: 10px;
+  padding: 18px 14px; text-align: center; cursor: pointer; transition: all .2s;
+  background: #fff;
+}
+.doc-card:hover { border-color: var(--primary); background: var(--primary-light); }
+.doc-card i     { font-size: 24px; color: var(--text-light); margin-bottom: 8px; display: block; }
+.doc-card:hover i { color: var(--primary); }
+.doc-card p     { font-size: 13px; font-weight: 600; color: var(--text-mid); margin-bottom: 4px; }
+.doc-card span  { font-size: 11px; color: var(--text-light); }
+.doc-card.uploaded { border-style: solid; border-color: var(--accent); background: var(--accent-light); }
+.doc-card.uploaded i, .doc-card.uploaded p { color: var(--accent); }
+.doc-card.uploaded span { color: #009e80; }
+
+/* ── Salary radio option ── */
+.radio-opt {
+  display: flex; align-items: center; gap: 8px;
+  padding: 9px 18px; border: 1.5px solid var(--border);
+  border-radius: 9px; cursor: pointer; background: #fff; transition: all .15s;
+}
+.radio-opt:has(input:checked) { border-color: var(--primary); background: var(--primary-light); }
+.radio-opt:has(input:checked) span { color: var(--primary); }
+.radio-opt input { accent-color: var(--primary); width: 14px; height: 14px; cursor: pointer; }
+.radio-opt span  { font-size: 13px; font-weight: 600; color: var(--text-mid); }
+
+/* ── Step progress dots ── */
+.step-dots { display: flex; gap: 4px; align-items: center; }
+.step-dot  { height: 6px; border-radius: 3px; transition: all .3s; cursor: pointer; }
+
+/* ── Review blocks ── */
+.rev-block { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; margin-bottom: 14px; }
+.rev-block-header {
+  padding: 10px 16px; background: #fff; border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 10px;
+}
+.rev-block-header i    { color: var(--primary); font-size: 13px; }
+.rev-block-header span { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: var(--text-dark); }
+.rev-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; background: var(--bg); }
+.rev-row  { padding: 10px 16px; display: flex; flex-direction: column; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.rev-row:nth-child(3n)         { border-right: none; }
+.rev-row:nth-last-child(-n+3)  { border-bottom: none; }
+.rev-row span   { font-size: 10px; color: var(--text-light); font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 3px; }
+.rev-row strong { font-size: 12px; color: var(--text-dark); font-weight: 600; }
+.rev-row strong.green  { color: var(--accent); }
+.rev-row strong.blue   { color: var(--primary); }
+.rev-row strong.muted  { color: var(--text-light); }
+
+/* ── Staff preview card (review step) ── */
+.staff-preview-card {
+  background: linear-gradient(135deg, var(--teal-light), var(--primary-light));
+  border: 1px solid var(--primary-mid); border-radius: 12px;
+  padding: 16px 20px; display: flex; align-items: center; gap: 18px; margin-bottom: 20px;
+}
+.sp-avatar {
+  width: 62px; height: 62px; border-radius: 16px;
+  background: linear-gradient(135deg, #0D6EAC, #0097A7);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; font-weight: 800; color: #fff; font-family: var(--font-head);
+  flex-shrink: 0; border: 3px solid #fff; box-shadow: var(--shadow);
+}
+.sp-info strong { font-family: var(--font-head); font-size: 16px; font-weight: 700; color: var(--text-dark); display: block; }
+.sp-info span   { font-size: 12px; color: var(--text-mid); }
+.sp-chips { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
+.sp-chip  { font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 6px; background: #fff; }
+
+/* ── Page header alias ── */
+.page-header-left h2 { font-family: var(--font-head); font-size: 20px; font-weight: 800; color: var(--text-dark); }
+.page-header-left p  { font-size: 13px; color: var(--text-light); margin-top: 3px; }

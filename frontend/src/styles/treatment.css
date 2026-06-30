@@ -1,0 +1,280 @@
+/* ── Treatment Master — page-specific styles ───────────────────────────
+   Builds on the global PharmaOne design tokens (--primary, --danger, etc).
+   Only adds what the shared stylesheet doesn't already define.
+──────────────────────────────────────────────────────────────────────── */
+
+.tm-page { display: block; }
+
+/* ── STAT CARDS: colored top accent bar per design ── */
+.tm-stats .stat-card {
+  position: relative;
+  overflow: hidden;
+  border-top: 3px solid transparent;
+}
+.tm-stats .stat-card.accent-red    { border-top-color: var(--danger); }
+.tm-stats .stat-card.accent-purple { border-top-color: var(--purple); }
+.tm-stats .stat-card.accent-blue   { border-top-color: var(--primary); }
+.tm-stats .stat-card.accent-green  { border-top-color: var(--accent); }
+.tm-stats .stat-sub { font-size: 11px; color: var(--text-light); margin-top: 2px; }
+
+/* ── TABLE: treatment name code chip ── */
+.tm-code {
+  display: inline-block;
+  background: var(--danger-light);
+  color: var(--danger);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 4px;
+  margin-left: 6px;
+}
+.tm-total { font-weight: 700; color: var(--danger); }
+.tm-muted { color: var(--text-light); font-size: 12px; }
+
+/* ── Requirement mini-icons in the table ── */
+.req-icons { display: flex; gap: 5px; flex-wrap: wrap; max-width: 90px; }
+.req-icon {
+  width: 24px; height: 24px; border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; background: var(--accent-light); color: var(--accent);
+}
+
+/* ── CARDS VIEW ── */
+.tm-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  padding: 20px;
+}
+.tm-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: #fff;
+  transition: box-shadow 0.15s, border-color 0.15s;
+}
+.tm-card:hover { box-shadow: var(--shadow-md); border-color: var(--primary-mid); }
+.tm-card-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px; }
+.tm-card strong { font-size: 14px; color: var(--text-dark); }
+.tm-card small { font-size: 11px; color: var(--text-light); margin-bottom: 6px; }
+.tm-card-row { display: flex; justify-content: space-between; font-size: 12px; color: var(--text-mid); }
+.tm-card-row span:last-child { font-weight: 600; color: var(--text-dark); }
+.tm-card .action-btns { margin-top: 8px; }
+
+/* ── DRAWER: preview banner (Basic Info / Review steps) ── */
+.tm-preview-banner {
+  display: flex; align-items: center; gap: 14px;
+  background: var(--primary-light);
+  border: 1px solid var(--primary-mid);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  margin-bottom: 18px;
+}
+.tm-preview-banner .entity-logo {
+  width: 48px; height: 48px; font-size: 20px;
+  background: linear-gradient(135deg, var(--danger), #FF7A6B);
+}
+.tm-preview-text { flex: 1; display: flex; flex-direction: column; gap: 2px; }
+.tm-preview-text strong { font-size: 15px; color: var(--text-dark); }
+.tm-preview-text span { font-size: 12px; color: var(--text-light); }
+.tm-code-pill {
+  background: var(--danger-light); color: var(--danger);
+  font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 6px;
+}
+
+/* ── Cost & GST summary box ── */
+.tm-cost-summary {
+  background: var(--danger-light);
+  border: 1px solid #F8C9C4;
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  margin-top: 14px;
+}
+.tm-cost-row {
+  display: flex; justify-content: space-between;
+  font-size: 12.5px; color: var(--text-mid);
+  padding: 6px 0;
+}
+.tm-cost-row strong { color: var(--text-dark); font-weight: 700; }
+.tm-cost-row.total {
+  border-top: 1px solid #F0B3AC;
+  margin-top: 4px; padding-top: 10px;
+}
+.tm-cost-row.total span,
+.tm-cost-row.total strong { color: var(--danger); font-size: 14px; font-weight: 800; }
+
+/* ── Requirements: toggle grid (3 columns) ── */
+.tm-toggle-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.tm-toggle-row {
+  display: flex; align-items: center; gap: 10px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  transition: border-color 0.15s, background 0.15s;
+}
+.tm-toggle-row.full { grid-column: 1 / -1; }
+.tm-toggle-row:has(input:checked) {
+  border-color: var(--primary-mid);
+  background: var(--primary-light);
+}
+.tm-toggle-icon {
+  width: 30px; height: 30px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--bg); font-size: 14px; flex-shrink: 0;
+}
+.tm-toggle-label { flex: 1; font-size: 13px; font-weight: 600; color: var(--text-mid); }
+
+/* ── info box variants ── */
+.info-box.danger {
+  background: var(--danger-light);
+  border-color: #F5B7B1;
+}
+.info-box.danger p { color: var(--danger); }
+
+/* ── Material Mapping mini-table ── */
+.tm-material-table { margin-top: 16px; }
+.tm-material-head,
+.tm-material-row {
+  display: grid;
+  grid-template-columns: 30px 2fr 70px 90px 110px 30px;
+  gap: 10px;
+  align-items: center;
+  padding: 8px 4px;
+}
+.tm-material-head {
+  font-size: 10.5px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.5px; color: var(--text-light);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 10px;
+}
+.tm-material-row {
+  border-bottom: 1px solid var(--border);
+}
+.tm-material-row span:first-child { font-size: 12px; color: var(--text-light); text-align: center; }
+.tm-material-row input,
+.tm-material-row select {
+  border: 1.5px solid var(--border); border-radius: 8px;
+  padding: 7px 10px; font-size: 12.5px; color: var(--text-dark);
+  background: #fff; outline: none; font-family: var(--font);
+  width: 100%;
+}
+.tm-material-row input:focus,
+.tm-material-row select:focus { border-color: var(--primary); }
+.tm-material-row input:disabled,
+.tm-material-row select:disabled { background: var(--bg); color: var(--text-light); }
+
+/* ── Doctor Config mini-table ── */
+.tm-doctor-table { margin-top: 16px; overflow-x: auto; }
+.tm-doctor-head,
+.tm-doctor-row {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr 50px;
+  gap: 12px;
+  align-items: center;
+  padding: 10px 4px;
+  min-width: 560px;
+}
+.tm-doctor-head {
+  font-size: 10.5px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.5px; color: var(--text-light);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 10px;
+}
+.tm-doctor-row { border-bottom: 1px solid var(--border); }
+.tm-doctor-row input,
+.tm-doctor-row select {
+  border: 1.5px solid var(--border); border-radius: 8px;
+  padding: 8px 10px; font-size: 13px; color: var(--text-dark);
+  background: #fff; outline: none; font-family: var(--font);
+  width: 100%;
+}
+.tm-doctor-row input:focus,
+.tm-doctor-row select:focus { border-color: var(--primary); }
+.tm-doctor-row input:disabled,
+.tm-doctor-row select:disabled { background: var(--bg); color: var(--text-light); }
+
+/* ── Shared "remove row" + "add row" controls ── */
+.tm-remove {
+  width: 26px; height: 26px; border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--danger); cursor: pointer; font-size: 13px;
+  transition: background 0.15s;
+}
+.tm-remove:hover { background: var(--danger-light); }
+.tm-add-row {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  border: 1.5px dashed var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  color: var(--text-mid);
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: var(--font);
+  transition: all 0.15s;
+}
+.tm-add-row:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-light); }
+
+/* ── Package step ── */
+.tm-optional { font-size: 11px; font-weight: 500; color: var(--text-light); }
+
+/* ── Review step ── */
+.tm-review-section {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  margin-bottom: 14px;
+  overflow: hidden;
+}
+.tm-review-title {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.5px;
+  color: var(--text-mid); background: var(--bg);
+  padding: 10px 14px; border-bottom: 1px solid var(--border);
+}
+.tm-review-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  padding: 14px;
+}
+.tm-review-item { display: flex; flex-direction: column; gap: 3px; }
+.tm-review-label { font-size: 10.5px; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.4px; }
+.tm-review-value { font-size: 13px; font-weight: 600; color: var(--text-dark); }
+.tm-review-value.accent { color: var(--danger); font-weight: 700; }
+.tm-review-value.success { color: var(--accent); }
+.tm-review-value.muted { color: var(--text-light); }
+
+/* ── Footer progress dots ── */
+.tm-progress-dots { display: flex; gap: 5px; }
+.tm-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--border);
+  transition: all 0.2s;
+}
+.tm-dot.active { background: var(--danger); width: 18px; border-radius: 4px; }
+.tm-dot.done { background: var(--accent); }
+
+/* ── Step nav: review step gets danger accent like screenshots ── */
+.step-nav-item.active .step-num { background: var(--danger); }
+.step-nav-item.active .step-nav-text strong { color: var(--danger); }
+.drawer-header { background: linear-gradient(135deg, var(--danger), #C0392B); }
+
+/* ── btn-success used on final submit ── */
+.btn-success { background: var(--accent); color: #fff; }
+.btn-success:hover { background: #00a382; }
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .tm-toggle-grid { grid-template-columns: 1fr; }
+  .tm-review-grid { grid-template-columns: repeat(2, 1fr); }
+  .drawer.drawer-wide { width: 100vw; }
+  .drawer-steps { width: 150px; }
+}
